@@ -1,0 +1,16 @@
+{
+    "name": "CITY:BIT V3",
+    "description": "Mục mở rộng dành cho bộ kit Thành phố thông minh version 1",
+    "libs": [
+        "citybit1_dht20.py", "citybit1_lcd1602.py", "citybit1_hcsr04.py"
+    ],
+    "blocks": [
+        "definition.js"
+    ],
+    "toolbox": "toolbox.xml",
+    "languages": {
+        "en": "languages/en.js",
+        "vi": "languages/vi.js"
+    },
+    "poster": "homebitv3.png"
+}

@@ -92,7 +92,7 @@ Blockly.Python['citybit1_oled_create'] = function(block) {
   // TODO: Assemble Python into code variable.
   Blockly.Python.definitions_['import_yolobit'] = 'from yolobit import *';
   Blockly.Python.definitions_['import_i2c'] = 'from machine import Pin, SoftI2C';
-  Blockly.Python.definitions_['import_oled'] = 'from plantbit2_ssd1306 import SSD1306_I2C';
+  Blockly.Python.definitions_['import_oled'] = 'from citybit1_ssd1306 import SSD1306_I2C';
   // oled = SSD1306_I2C(oled_width, oled_height, i2c)
   var code = 'lcd_oled = SSD1306_I2C( 128, 64 , SoftI2C(scl=Pin(22), sda=Pin(21)))\n';
   return code;

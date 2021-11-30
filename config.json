@@ -2,7 +2,7 @@
     "name": "CITY:BIT",
     "description": "Mục mở rộng dành cho bộ kit Thành phố thông minh",
     "libs": [
-        "citybit1_dht20.py", "citybit1_lcd1602.py", "citybit1_hcsr04.py"
+        "citybit1_dht20.py", "citybit1_ssd1306.py", "citybit1_hcsr04.py"
     ],
     "blocks": [
         "definition.js"

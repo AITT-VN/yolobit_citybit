@@ -1,1 +1,1 @@
-Yolo:Bit extension for City:Bit V1 Kit
+Yolo:Bit extension for City:Bit Kit

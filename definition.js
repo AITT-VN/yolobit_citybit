@@ -1,5 +1,4 @@
 // DHT20
-
 Blockly.Blocks["citybit1_dht_measure"] = {
   init: function() {
     this.jsonInit({
@@ -66,115 +65,110 @@ Blockly.Python["citybit1_dht_read"] = function(block) {
 };
 
 
-// LCD 1602
+// OLED
 
-Blockly.Blocks["citybit1_lcd1602_backlight"] = {
-  init: function () {
-    this.jsonInit({
-      colour: "#6C42BF",
-      tooltip: "",
-      message0: "%1 đèn màn hình LCD1602",
-      args0: [
-        {
-          type: "field_dropdown",
-          name: "action",
-          options: [
-            ["bật", "on"],
-            ["tắt", "off"],
-          ],
-        },
-      ],
-      previousStatement: null,
-      nextStatement: null,
-      helpUrl: "",
-    });
+Blockly.Blocks['citybit1_oled_create'] = {
+  init: function() {
+    this.jsonInit(
+      {
+        "type": "citybit1_oled_create",
+        "message0": Blockly.Msg.CITYBIT1_OLED_CREATE_MESSAGE0,
+        "args0": [
+        ],
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": "#6C42BF",
+        "tooltip": Blockly.Msg.CITYBIT1_OLED_CREATE_TOOLTIP,
+        "helpUrl": Blockly.Msg.CITYBIT1_OLED_CREATE_HELPURL
+      }
+    );
   },
   getDeveloperVars: function() {
-    return ['lcd1602'];
+    return ['lcd_oled'];
   }
 };
 
-Blockly.Python['citybit1_lcd1602_backlight'] = function(block) {
-  var action = block.getFieldValue("action");
+Blockly.Python['citybit1_oled_create'] = function(block) {
   // TODO: Assemble Python into code variable.
-  Blockly.Python.definitions_['import_lcd1602'] = 'from citybit1_lcd1602 import LCD1602';
-  Blockly.Python.definitions_['import_lcd1602_init'] = 'lcd1602 = LCD1602()';
-  var code = 'lcd1602.backlight_' + action + '()\n';
+  Blockly.Python.definitions_['import_yolobit'] = 'from yolobit import *';
+  Blockly.Python.definitions_['import_i2c'] = 'from machine import Pin, SoftI2C';
+  Blockly.Python.definitions_['import_oled'] = 'from plantbit2_ssd1306 import SSD1306_I2C';
+  // oled = SSD1306_I2C(oled_width, oled_height, i2c)
+  var code = 'lcd_oled = SSD1306_I2C( 128, 64 , SoftI2C(scl=Pin(22), sda=Pin(21)))\n';
   return code;
 };
 
-Blockly.Blocks["citybit1_lcd1602_display"] = {
-  init: function () {
-    this.jsonInit({
-      colour: "#6C42BF",
-      tooltip: "",
-      message0: "hiện lên LCD1602 %1 tại x %2 y %3 %4",
-      args0: [
-        {
-          type: "input_value",
-          name: "string"
-        },
-        {
-          type: "input_value",
-          name: "X",
-          check: "Number",
-          min: 0,
-          max: 16
-        },
-        {
-          type: "input_value",
-          name: "Y",
-          check: "Number",
-          min: 0,
-          max: 2
-        },
-        {
-          type: "input_dummy"
-        },
-      ],
-      previousStatement: null,
-      nextStatement: null,
-      helpUrl: "",
-    });
+Blockly.Blocks['citybit1_oled_text'] = {
+  init: function() {
+    this.jsonInit(
+      {
+        "type": "citybit1_oled_text",
+        "message0": Blockly.Msg.CITYBIT1_OLED_TEXT_MESSAGE0,
+        "args0": [
+          {
+            "type": "input_value",
+            "name": "TEXT"
+          },
+          {
+            "type": "input_value",
+            "name": "X"
+          },
+          {
+            "type": "input_value",
+            "name": "Y"
+          },
+          {
+            "type": "input_dummy"
+          }
+        ],
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": "#6C42BF",
+        "tooltip": Blockly.Msg.CITYBIT1_OLED_TEXT_TOOLTIP,
+        "helpUrl": Blockly.Msg.CITYBIT1_OLED_TEXT_HELPURL
+      }
+    );
   },
   getDeveloperVars: function() {
-    return ['lcd1602'];
+    return ['lcd_oled'];
   }
 };
 
-Blockly.Python["citybit1_lcd1602_display"] = function (block) {
-  Blockly.Python.definitions_['import_lcd1602'] = 'from citybit1_lcd1602 import LCD1602';
-  Blockly.Python.definitions_['import_lcd1602_init'] = 'lcd1602 = LCD1602()';
-  var string = Blockly.Python.valueToCode(block, 'string', Blockly.Python.ORDER_ATOMIC);
-  var x = Blockly.Python.valueToCode(block, 'X', Blockly.Python.ORDER_ATOMIC);
-  var y = Blockly.Python.valueToCode(block, 'Y', Blockly.Python.ORDER_ATOMIC);  // TODO: Assemble Python into code variable.
-  var code = "lcd1602.move_to(" + x + ", "+ y +")\n" + "lcd1602.putstr("+ string +")\n";
+Blockly.Python['citybit1_oled_text'] = function(block) {
+  var value_text = Blockly.Python.valueToCode(block, 'TEXT', Blockly.Python.ORDER_ATOMIC);
+  var value_x = Blockly.Python.valueToCode(block, 'X', Blockly.Python.ORDER_ATOMIC);
+  var value_y = Blockly.Python.valueToCode(block, 'Y', Blockly.Python.ORDER_ATOMIC);
+  // TODO: Assemble Python into code variable.
+  //oled.text('Hello, World 1!', 0, 0, col); oled.show()
+  var code = 'lcd_oled.text(str(' + value_text + '), ' + value_x + ', ' + value_y + ', 1); lcd_oled.show()\n';
   return code;
 };
 
-Blockly.Blocks["citybit1_lcd1602_clear"] = {
-  init: function () {
-    this.jsonInit({
-      colour: "#6C42BF",
-      tooltip: "",
-      message0: "xóa màn hình LCD1602",
-      args0: [
-      ],
-      previousStatement: null,
-      nextStatement: null,
-      helpUrl: "Xóa trắng màn hình LCD1602",
-    });
+Blockly.Blocks['citybit1_oled_fill'] = {
+  init: function() {
+    this.jsonInit(
+      {
+        "type": "citybit1_oled_fill",
+        "message0": Blockly.Msg.CITYBIT1_OLED_FILL_MESSAGE0,
+        "args0": [
+        ],
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": "#6C42BF",
+        "tooltip": Blockly.Msg.CITYBIT1_OLED_FILL_TOOLTIP,
+        "helpUrl": Blockly.Msg.CITYBIT1_OLED_FILL_HELPURL
+      }
+    );
   },
   getDeveloperVars: function() {
-    return ['lcd1602'];
+    return ['lcd_oled'];
   }
 };
 
-Blockly.Python["citybit1_lcd1602_clear"] = function (block) {
+Blockly.Python['citybit1_oled_fill'] = function(block) {
   // TODO: Assemble Python into code variable.
-  Blockly.Python.definitions_['import_lcd1602'] = 'from citybit1_lcd1602 import LCD1602';
-  Blockly.Python.definitions_['import_lcd1602_init'] = 'lcd1602 = LCD1602()';
-  var code = "lcd1602.clear()\n";
+  //oled.fill(1); oled.show()
+  var code = 'lcd_oled.fill(0); lcd_oled.show()\n';
   return code;
 };
 
@@ -202,10 +196,6 @@ Blockly.Blocks['citybit1_led'] = {
             "type": "field_dropdown",
             "name": "NAME",
             "options": [
-              [
-                "P10",
-                "pin10"
-              ],
               [
                 "P0",
                 "pin0"
@@ -245,6 +235,10 @@ Blockly.Blocks['citybit1_led'] = {
               [
                 "P9",
                 "pin9"
+              ],
+              [
+                "P10",
+                "pin10"
               ],
               [
                 "P11",
@@ -317,10 +311,6 @@ Blockly.Blocks['citybit1_detect_motion'] = {
             "name": "NAME",
             "options": [
               [
-                "P16",
-                "pin16"
-              ],
-              [
                 "P0",
                 "pin0"
               ],
@@ -383,6 +373,10 @@ Blockly.Blocks['citybit1_detect_motion'] = {
               [
                 "P15",
                 "pin15"
+              ],
+              [
+                "P16",
+                "pin16"
               ],
               [
                 "P19",
@@ -691,7 +685,7 @@ Blockly.Blocks['citybit1_ultrasonic_create'] = {
     );
   },
   getDeveloperVars: function() {
-    return ['ultrasonic_plant_bit'];
+    return ['ultrasonic_city_bit'];
   }
 };
 
@@ -701,7 +695,7 @@ Blockly.Python['citybit1_ultrasonic_create'] = function(block) {
   // TODO: Assemble Python into code variable.
   Blockly.Python.definitions_['import_yolobit'] = 'from yolobit import *';
   Blockly.Python.definitions_['import_ultrasonic'] = 'from citybit1_hcsr04 import HCSR04';
-  var code = 'ultrasonic_plant_bit = HCSR04(trigger_pin=' + dropdown_trg + '.pin, echo_pin=' + dropdown_ech + '.pin)\n';
+  var code = 'ultrasonic_city_bit = HCSR04(trigger_pin=' + dropdown_trg + '.pin, echo_pin=' + dropdown_ech + '.pin)\n';
   return code;
 };
 
@@ -709,7 +703,7 @@ Blockly.Blocks['citybit1_ultrasonic_read'] = {
   init: function() {
     this.jsonInit(
       {
-        "type": "plantbit_ultrasonic_read",
+        "type": "citybit1_ultrasonic_read",
         "message0": Blockly.Msg.CITYBIT1_ULTRASONIC_READ_MESSAGE0,
         "args0": [
           {
@@ -790,7 +784,7 @@ Blockly.Blocks['citybit1_ultrasonic_checkdistance'] = {
     );
   },
   getDeveloperVars: function() {
-    return ['ultrasonic_plant_bit'];
+    return ['ultrasonic_city_bit'];
   }
 };
 
@@ -800,9 +794,9 @@ Blockly.Python['citybit1_ultrasonic_checkdistance'] = function(block) {
   // TODO: Assemble Python into code variable.
   var code = '';
   if (dropdown_type == 'CM')
-    code = 'ultrasonic_city_bit.distance_cm() > ' + value_distance;
+    code = 'ultrasonic_city_bit.distance_cm() < ' + value_distance;
   else
-    code = 'ultrasonic_city_bit.distance_mm() > ' + value_distance;
+    code = 'ultrasonic_city_bit.distance_mm() < ' + value_distance;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };
@@ -848,7 +842,7 @@ Blockly.Python['citybit1_water_sensor'] = function(block) {
   Blockly.Python.definitions_['import_yolobit'] = 'from yolobit import *';
   var dropdown_name = block.getFieldValue('NAME');
   // TODO: Assemble Python into code variable.
-  var code = '' + ' + dropdown_name + '.read_analog();
+  var code = '' + dropdown_name + '.read_analog()';
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };
@@ -858,7 +852,7 @@ Blockly.Blocks['citybit1_detect_water'] = {
     this.jsonInit(
       {
         "type": "citybit1_detect_water",
-        "message0": "cảm biến ngập nước chân chân %1 phát hiện ngập nước",
+        "message0": "cảm biến ngập nước chân %1 phát hiện ngập nước",
         "args0": [
           {
             "type": "field_dropdown",
@@ -893,6 +887,53 @@ Blockly.Python['citybit1_detect_water'] = function(block) {
   var dropdown_name = block.getFieldValue('NAME');
   // TODO: Assemble Python into code variable.
   var code = '' + dropdown_name + '.read_analog() < 200';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.Python.ORDER_NONE];
+};
+
+
+// Cảm biến chất lượng không khí
+
+Blockly.Blocks['citybit1_mq135_sensor'] = {
+  init: function() {
+    this.jsonInit(
+      {
+        "type": "citybit1_mq135_sensor",
+        "message0": "đọc cảm biến đo chất lượng không khí chân %1",
+        "args0": [
+          {
+            "type": "field_dropdown",
+            "name": "NAME",
+            "options": [
+              [
+                "P0",
+                "pin0"
+              ],
+              [
+                "P1",
+                "pin1"
+              ],
+              [
+                "P2",
+                "pin2"
+              ]
+            ]
+          }
+        ],
+        "output": null,
+        "colour": "#6c42bf",
+        "tooltip": "Đọc giá trị của cảm biến đo chất lượng không khí MQ135",
+        "helpUrl": ""
+      }
+    );
+  }
+};
+
+Blockly.Python['citybit1_mq135_sensor'] = function(block) {
+  Blockly.Python.definitions_['import_yolobit'] = 'from yolobit import *';
+  var dropdown_name = block.getFieldValue('NAME');
+  // TODO: Assemble Python into code variable.
+  var code = '' + dropdown_name + '.read_analog()';
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };

@@ -11,26 +11,15 @@
     <block type="citybit1_ultrasonic_checkdistance">
       <value name="DISTANCE"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
     </block> 
-    <block type="citybit1_lcd1602_backlight"/>
-    <block type="citybit1_lcd1602_display">
-      <value name="string">
-        <shadow type="text">
-          <field name="TEXT">Hello</field>
-        </shadow>
-      </value>
-      <value name="X">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-      <value name="Y">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="citybit1_lcd1602_clear"/>
+    <block type="citybit1_oled_create"/>
+    <block type="citybit1_oled_text">
+      <value name="TEXT"><shadow type="text"><field name="TEXT">hello</field></shadow></value>
+      <value name="X"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+      <value name="Y"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+    </block>    
+    <block type="citybit1_oled_fill"/>
     <block type="citybit1_water_sensor"/>
     <block type="citybit1_detect_water"/>
+    <block type="citybit1_mq135_sensor"/>
   </category>
 </xml>

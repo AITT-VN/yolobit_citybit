@@ -1,5 +1,5 @@
 <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
-  <category name="CITY:BIT V1" colour="#6c42bf" icon="building">
+  <category name="CITY:BIT" colour="#6c42bf" icon="building">
     <block type="citybit_light_sensor"/>
     <block type="citybit_sound_sensor"/>
     <block type="citybit_detect_motion"/>

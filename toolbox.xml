@@ -1,25 +1,25 @@
 <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
-  <category name="CITY:BIT V1" colour="#6c42bf" icon="home">
-    <block type="citybit1_light_sensor"/>
-    <block type="citybit1_sound_sensor"/>
-    <block type="citybit1_detect_motion"/>
-    <block type="citybit1_led"/>
-    <block type="citybit1_dht_measure"/>
-    <block type="citybit1_dht_read"/>
-    <block type="citybit1_ultrasonic_create"/>
-    <block type="citybit1_ultrasonic_read"/>
-    <block type="citybit1_ultrasonic_checkdistance">
+  <category name="CITY:BIT V1" colour="#6c42bf" icon="building">
+    <block type="citybit_light_sensor"/>
+    <block type="citybit_sound_sensor"/>
+    <block type="citybit_detect_motion"/>
+    <block type="citybit_led"/>
+    <block type="citybit_dht_measure"/>
+    <block type="citybit_dht_read"/>
+    <block type="citybit_ultrasonic_create"/>
+    <block type="citybit_ultrasonic_read"/>
+    <block type="citybit_ultrasonic_checkdistance">
       <value name="DISTANCE"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
     </block> 
-    <block type="citybit1_oled_create"/>
-    <block type="citybit1_oled_text">
+    <block type="citybit_oled_create"/>
+    <block type="citybit_oled_text">
       <value name="TEXT"><shadow type="text"><field name="TEXT">hello</field></shadow></value>
       <value name="X"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
       <value name="Y"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
     </block>    
-    <block type="citybit1_oled_fill"/>
-    <block type="citybit1_water_sensor"/>
-    <block type="citybit1_detect_water"/>
-    <block type="citybit1_mq135_sensor"/>
+    <block type="citybit_oled_fill"/>
+    <block type="citybit_water_sensor"/>
+    <block type="citybit_detect_water"/>
+    <block type="citybit_mq135_sensor"/>
   </category>
 </xml>

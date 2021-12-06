@@ -808,7 +808,7 @@ Blockly.Blocks['citybit_water_sensor'] = {
     this.jsonInit(
       {
         "type": "citybit_water_sensor",
-        "message0": "đọc cảm biến ngập nước chân %1",
+        "message0": "đọc cảm biến ngập nước (%%) chân %1",
         "args0": [
           {
             "type": "field_dropdown",
@@ -842,51 +842,7 @@ Blockly.Python['citybit_water_sensor'] = function(block) {
   Blockly.Python.definitions_['import_yolobit'] = 'from yolobit import *';
   var dropdown_name = block.getFieldValue('NAME');
   // TODO: Assemble Python into code variable.
-  var code = '' + dropdown_name + '.read_analog()';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.Python.ORDER_NONE];
-};
-
-Blockly.Blocks['citybit_detect_water'] = {
-  init: function() {
-    this.jsonInit(
-      {
-        "type": "citybit_detect_water",
-        "message0": "cảm biến ngập nước chân %1 phát hiện ngập nước",
-        "args0": [
-          {
-            "type": "field_dropdown",
-            "name": "NAME",
-            "options": [
-              [
-                "P0",
-                "pin0"
-              ],
-              [
-                "P1",
-                "pin1"
-              ],
-              [
-                "P2",
-                "pin2"
-              ]
-            ]
-          }
-        ],
-        "output": null,
-        "colour": "#6c42bf",
-        "tooltip": "Cảm biến ngập nước phát hiện ngập nước",
-        "helpUrl": ""
-      }
-    );
-  }
-};
-
-Blockly.Python['citybit_detect_water'] = function(block) {
-  Blockly.Python.definitions_['import_yolobit'] = 'from yolobit import *';
-  var dropdown_name = block.getFieldValue('NAME');
-  // TODO: Assemble Python into code variable.
-  var code = '' + dropdown_name + '.read_analog() < 200';
+  var code = 'round(translate((' + dropdown_name + '.read_analog()), 4095, 0, 0, 100))';
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };

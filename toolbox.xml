@@ -3,6 +3,7 @@
     <block type="citybit_light_sensor"/>
     <block type="citybit_sound_sensor"/>
     <block type="citybit_detect_motion"/>
+    <block type="citybit_dualline_finder"/>
     <block type="citybit_led"/>
     <block type="citybit_dht_measure"/>
     <block type="citybit_dht_read"/>

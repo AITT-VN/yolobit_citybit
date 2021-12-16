@@ -900,3 +900,64 @@ Blockly.Python['citybit_mq135_sensor'] = function(block) {
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };
+
+// Cảm biến Dualine finder
+Blockly.Blocks['citybit_dualline_finder'] = {
+  init: function() {
+    this.jsonInit(
+      {
+        "type": "citybit_dualline_finder",
+        "message0": "cảm biến hồng ngoại %1 phát hiện vật cản",
+        "args0": [
+          {
+            "type": "field_dropdown",
+            "name": "NAME",
+            "options": [
+              [
+                "P3 - P6",
+                "pin3"
+              ],
+              [
+                "P10 - P13",
+                "pin10"
+              ],
+              [
+                "P14 - P15",
+                "pin14"
+              ],
+              [
+                "P16 - P12",
+                "pin16"
+              ]
+            ]
+          }
+        ],
+        "output": null,
+        "colour": "#6c42bf",
+        "tooltip": "Trả về giá trị đúng hay sai của cảm biến hồng ngoại 2 mắt đọc",
+        "helpUrl": ""
+      }
+    );
+  }
+};
+
+Blockly.Python['citybit_dualline_finder'] = function(block) {
+  Blockly.Python.definitions_['import_yolobit'] = 'from yolobit import *';
+  var dropdown_name = block.getFieldValue('NAME');
+  // TODO: Assemble Python into code variable.
+  var code = '';
+  if (dropdown_name == 'pin3') {
+    code = '(pin3.read_digital() == (0) or pin6.read_digital() == (0))';
+  }
+  else if (dropdown_name == 'pin10') {
+    code = '(pin10.read_digital() == (0) or pin13.read_digital() == (0))';
+  }
+  else if (dropdown_name == 'pin14') {
+    code = '(pin14.read_digital() == (0) or pin15.read_digital() == (0))';
+  }
+  else if (dropdown_name == 'pin16') {
+    code = '(pin16.read_digital() == (0) or pin12.read_digital() == (0))';
+  }
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.Python.ORDER_NONE];
+};

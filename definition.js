@@ -901,63 +901,111 @@ Blockly.Python['citybit_mq135_sensor'] = function(block) {
   return [code, Blockly.Python.ORDER_NONE];
 };
 
-// Cảm biến Dualine finder
-Blockly.Blocks['citybit_dualline_finder'] = {
+// Cảm biến Infrared Reflective
+Blockly.Blocks['citybit_infrared_reflective'] = {
   init: function() {
     this.jsonInit(
       {
-        "type": "citybit_dualline_finder",
-        "message0": "cảm biến hồng ngoại %1 phát hiện vật cản",
+        "type": "citybit_infrared_reflective",
+        "message0": "cảm biến hồng ngoại chân %1 phát hiện vật cản",
         "args0": [
           {
             "type": "field_dropdown",
             "name": "NAME",
             "options": [
               [
-                "P3 - P6",
+                "P0",
+                "pin0"
+              ],
+              [
+                "P1",
+                "pin1"
+              ],
+              [
+                "P2",
+                "pin2"
+              ],
+              [
+                "P3",
                 "pin3"
               ],
               [
-                "P10 - P13",
+                "P4",
+                "pin4"
+              ],
+              [
+                "P5",
+                "pin5"
+              ],
+              [
+                "P6",
+                "pin6"
+              ],
+              [
+                "P7",
+                "pin7"
+              ],
+              [
+                "P8",
+                "pin8"
+              ],
+              [
+                "P9",
+                "pin9"
+              ],
+              [
+                "P10",
                 "pin10"
               ],
               [
-                "P14 - P15",
+                "P11",
+                "pin11"
+              ],
+              [
+                "P12",
+                "pin12"
+              ],
+              [
+                "P13",
+                "pin13"
+              ],
+              [
+                "P14",
                 "pin14"
               ],
               [
-                "P16 - P12",
+                "P15",
+                "pin15"
+              ],
+              [
+                "P16",
                 "pin16"
+              ],
+              [
+                "P19",
+                "pin19"
+              ],
+              [
+                "P20",
+                "pin20"
               ]
             ]
           }
         ],
         "output": null,
         "colour": "#6c42bf",
-        "tooltip": "Trả về giá trị đúng hay sai của cảm biến hồng ngoại 2 mắt đọc",
+        "tooltip": "Trả về giá trị đúng hay sai của cảm biến hồng ngoại 1 mắt đọc",
         "helpUrl": ""
       }
     );
   }
 };
 
-Blockly.Python['citybit_dualline_finder'] = function(block) {
+Blockly.Python['citybit_infrared_reflective'] = function(block) {
   Blockly.Python.definitions_['import_yolobit'] = 'from yolobit import *';
   var dropdown_name = block.getFieldValue('NAME');
   // TODO: Assemble Python into code variable.
-  var code = '';
-  if (dropdown_name == 'pin3') {
-    code = '(pin3.read_digital() == (0) or pin6.read_digital() == (0))';
-  }
-  else if (dropdown_name == 'pin10') {
-    code = '(pin10.read_digital() == (0) or pin13.read_digital() == (0))';
-  }
-  else if (dropdown_name == 'pin14') {
-    code = '(pin14.read_digital() == (0) or pin15.read_digital() == (0))';
-  }
-  else if (dropdown_name == 'pin16') {
-    code = '(pin16.read_digital() == (0) or pin12.read_digital() == (0))';
-  }
+  var code = dropdown_name + '.read_digital() == 0';
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };

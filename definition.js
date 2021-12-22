@@ -907,7 +907,7 @@ Blockly.Blocks['citybit_infrared_reflective'] = {
     this.jsonInit(
       {
         "type": "citybit_infrared_reflective",
-        "message0": "cảm biến hồng ngoại chân %1 phát hiện vật cản",
+        "message0": "cảm biến vật cản chân %1 phát hiện vật",
         "args0": [
           {
             "type": "field_dropdown",
@@ -994,7 +994,7 @@ Blockly.Blocks['citybit_infrared_reflective'] = {
         ],
         "output": null,
         "colour": "#6c42bf",
-        "tooltip": "Trả về giá trị đúng hay sai của cảm biến hồng ngoại 1 mắt đọc",
+        "tooltip": "Trả về giá trị đúng hay sai của cảm biến vật cản",
         "helpUrl": ""
       }
     );

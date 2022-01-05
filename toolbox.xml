@@ -20,6 +20,7 @@
     </block>    
     <block type="citybit_oled_fill"/>
     <block type="citybit_water_sensor"/>
+    <block type="citybit_water_sensor_digital"/>
     <block type="citybit_mq135_sensor"/>
   </category>
 </xml>

@@ -64,8 +64,12 @@ class MQ135(object):
         adc.width(ADC.WIDTH_12BIT)
         value = adc.read()
         print('ADC value: ', value)
-        if value == 0:
-            return -1
+        # if value == 0:
+        #     return -1
+        if value < 1:
+            return 1
+        elif value >= 4000:
+            return 4000
 
         return (4095./value - 1.) * self.RLOAD
 
@@ -76,7 +80,7 @@ class MQ135(object):
     def get_ppm(self):
         """Returns the ppm of CO2 sensed (assuming only CO2 in the air)"""
         #print(self.get_resistance(), self.RZERO, -self.PARB)
-        return self.PARA * math.pow((self.get_resistance()/ self.RZERO), -self.PARB)
+        return round(self.PARA * math.pow((self.get_resistance()/ self.RZERO), -self.PARB))
 
     def get_corrected_ppm(self, temperature, humidity):
         """Returns the ppm of CO2 sensed (assuming only CO2 in the air)

@@ -516,8 +516,8 @@ Blockly.Blocks['citybit_ultrasonic_create'] = {
             "name": "TRG",
             "options": [
               [
-                "P10",
-                "pin10"
+                "P3",
+                "pin3"
               ],
               [
                 "P0",
@@ -530,10 +530,6 @@ Blockly.Blocks['citybit_ultrasonic_create'] = {
               [
                 "P2",
                 "pin2"
-              ],
-              [
-                "P3",
-                "pin3"
               ],
               [
                 "P4",
@@ -558,6 +554,10 @@ Blockly.Blocks['citybit_ultrasonic_create'] = {
               [
                 "P9",
                 "pin9"
+              ],
+              [
+                "P10",
+                "pin10"
               ],
               [
                 "P11",
@@ -598,8 +598,8 @@ Blockly.Blocks['citybit_ultrasonic_create'] = {
             "name": "ECH",
             "options": [
               [
-                "P13",
-                "pin13"
+                "P6",
+                "pin6"
               ],
               [
                 "P0",
@@ -624,11 +624,7 @@ Blockly.Blocks['citybit_ultrasonic_create'] = {
               [
                 "P5",
                 "pin5"
-              ],
-              [
-                "P6",
-                "pin6"
-              ],
+              ],              
               [
                 "P7",
                 "pin7"
@@ -648,10 +644,14 @@ Blockly.Blocks['citybit_ultrasonic_create'] = {
               [
                 "P11",
                 "pin11"
-              ],
+              ],              
               [
                 "P12",
                 "pin12"
+              ],
+              [
+                "P13",
+                "pin13"
               ],
               [
                 "P14",
@@ -815,13 +815,13 @@ Blockly.Blocks['citybit_water_sensor'] = {
             "name": "NAME",
             "options": [
               [
-                "P0",
-                "pin0"
-              ],
-              [
                 "P1",
                 "pin1"
               ],
+              [
+                "P0",
+                "pin0"
+              ],              
               [
                 "P2",
                 "pin2"
@@ -847,7 +847,114 @@ Blockly.Python['citybit_water_sensor'] = function(block) {
   return [code, Blockly.Python.ORDER_NONE];
 };
 
+// Cảm biến Infrared Reflective
+Blockly.Blocks['citybit_water_sensor_digital'] = {
+  init: function() {
+    this.jsonInit(
+      {
+        "type": "citybit_water_sensor_digital",
+        "message0": "cảm biến ngập nước %1 gặp nước",
+        "args0": [
+          {
+            "type": "field_dropdown",
+            "name": "NAME",
+            "options": [
+              [
+                "P0",
+                "pin0"
+              ],
+              [
+                "P1",
+                "pin1"
+              ],
+              [
+                "P2",
+                "pin2"
+              ],
+              [
+                "P3",
+                "pin3"
+              ],
+              [
+                "P4",
+                "pin4"
+              ],
+              [
+                "P5",
+                "pin5"
+              ],
+              [
+                "P6",
+                "pin6"
+              ],
+              [
+                "P7",
+                "pin7"
+              ],
+              [
+                "P8",
+                "pin8"
+              ],
+              [
+                "P9",
+                "pin9"
+              ],
+              [
+                "P10",
+                "pin10"
+              ],
+              [
+                "P11",
+                "pin11"
+              ],
+              [
+                "P12",
+                "pin12"
+              ],
+              [
+                "P13",
+                "pin13"
+              ],
+              [
+                "P14",
+                "pin14"
+              ],
+              [
+                "P15",
+                "pin15"
+              ],
+              [
+                "P16",
+                "pin16"
+              ],
+              [
+                "P19",
+                "pin19"
+              ],
+              [
+                "P20",
+                "pin20"
+              ]
+            ]
+          }
+        ],
+        "output": null,
+        "colour": "#6c42bf",
+        "tooltip": "Trả về giá trị ngập (0) hay không ngập (1) của cảm biến ngập nước",
+        "helpUrl": ""
+      }
+    );
+  }
+};
 
+Blockly.Python['citybit_water_sensor_digital'] = function(block) {
+  Blockly.Python.definitions_['import_yolobit'] = 'from yolobit import *';
+  var dropdown_name = block.getFieldValue('NAME');
+  // TODO: Assemble Python into code variable.
+  var code = dropdown_name + '.read_digital() == 0';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.Python.ORDER_NONE];
+};
 // Cảm biến chất lượng không khí
 
 Blockly.Blocks['citybit_mq135_sensor'] = {

@@ -311,12 +311,12 @@ Blockly.Blocks['citybit_detect_motion'] = {
             "name": "NAME",
             "options": [
               [
-                "P0",
-                "pin0"
-              ],
-              [
                 "P1",
                 "pin1"
+              ],
+              [
+                "P0",
+                "pin0"
               ],
               [
                 "P2",
@@ -802,13 +802,14 @@ Blockly.Python['citybit_ultrasonic_checkdistance'] = function(block) {
 };
 
 
-// Cảm biến ngập nước
-Blockly.Blocks['citybit_water_sensor'] = {
+// Cảm biến ngập nướcư
+
+Blockly.Blocks['citybit_water_sensor_digital'] = {
   init: function() {
     this.jsonInit(
       {
-        "type": "citybit_water_sensor",
-        "message0": "đọc cảm biến ngập nước (%%) chân %1",
+        "type": "citybit_water_sensor_digital",
+        "message0": "cảm biến ngập nước %1 gặp nước",
         "args0": [
           {
             "type": "field_dropdown",
@@ -822,51 +823,6 @@ Blockly.Blocks['citybit_water_sensor'] = {
                 "P0",
                 "pin0"
               ],              
-              [
-                "P2",
-                "pin2"
-              ]
-            ]
-          }
-        ],
-        "output": null,
-        "colour": "#6c42bf",
-        "tooltip": "Đọc giá trị của cảm biến ngập nước",
-        "helpUrl": ""
-      }
-    );
-  }
-};
-
-Blockly.Python['citybit_water_sensor'] = function(block) {
-  Blockly.Python.definitions_['import_yolobit'] = 'from yolobit import *';
-  var dropdown_name = block.getFieldValue('NAME');
-  // TODO: Assemble Python into code variable.
-  var code = 'round(translate((' + dropdown_name + '.read_analog()), 4095, 0, 0, 100))';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.Python.ORDER_NONE];
-};
-
-// Cảm biến Infrared Reflective
-Blockly.Blocks['citybit_water_sensor_digital'] = {
-  init: function() {
-    this.jsonInit(
-      {
-        "type": "citybit_water_sensor_digital",
-        "message0": "cảm biến ngập nước %1 gặp nước",
-        "args0": [
-          {
-            "type": "field_dropdown",
-            "name": "NAME",
-            "options": [
-              [
-                "P0",
-                "pin0"
-              ],
-              [
-                "P1",
-                "pin1"
-              ],
               [
                 "P2",
                 "pin2"

@@ -21,7 +21,7 @@ Blockly.Python["citybit_dht_measure"] = function(block) {
   // TODO: Assemble Python into code variable.
   Blockly.Python.definitions_['import_i2c'] = 'from machine import Pin, SoftI2C';
   Blockly.Python.definitions_["import_dht20"] = "from citybit_dht20 import DHT20";
-  Blockly.Python.definitions_["import_create_dht20"] = "dht20_citybit = DHT20(SoftI2C(scl=Pin(22), sda=Pin(21)))";
+  Blockly.Python.definitions_["import_create_dht20"] = "dht20_citybit = DHT20(SoftI2C(scl=Pin(pin19.pin), sda=Pin(pin20.pin)))";
   var code = "dht20_citybit.read_dht20()\n";
   return code;
 };
@@ -54,7 +54,7 @@ Blockly.Python["citybit_dht_read"] = function(block) {
   // TODO: Assemble Python into code variable.
   Blockly.Python.definitions_['import_i2c'] = 'from machine import Pin, SoftI2C';
   Blockly.Python.definitions_["import_dht20"] = "from citybit_dht20 import DHT20";
-  Blockly.Python.definitions_["import_create_dht20"] = "dht20_citybit = DHT20(SoftI2C(scl=Pin(22), sda=Pin(21)))";
+  Blockly.Python.definitions_["import_create_dht20"] = "dht20_citybit = DHT20(SoftI2C(scl=Pin(pin19.pin), sda=Pin(pin20.pin)))";
   var code = "";
   if (dropdown_data == "TEMP")
     code = "dht20_citybit.dht20_temperature()";
@@ -94,7 +94,7 @@ Blockly.Python['citybit_oled_create'] = function(block) {
   Blockly.Python.definitions_['import_i2c'] = 'from machine import Pin, SoftI2C';
   Blockly.Python.definitions_['import_oled'] = 'from citybit_ssd1306 import SSD1306_I2C';
   // oled = SSD1306_I2C(oled_width, oled_height, i2c)
-  var code = 'lcd_oled_citybit = SSD1306_I2C( 128, 64 , SoftI2C(scl=Pin(22), sda=Pin(21)))\n';
+  var code = 'lcd_oled_citybit = SSD1306_I2C( 128, 64 , SoftI2C(scl=Pin(pin19.pin), sda=Pin(pin20.pin)))\n';
   return code;
 };
 

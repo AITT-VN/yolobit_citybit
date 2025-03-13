@@ -19,6 +19,7 @@ Blockly.Blocks["citybit_dht_measure"] = {
 
 Blockly.Python["citybit_dht_measure"] = function(block) {
   // TODO: Assemble Python into code variable.
+  Blockly.Python.definitions_['import_yolobit'] = 'from yolobit import *';
   Blockly.Python.definitions_['import_i2c'] = 'from machine import Pin, SoftI2C';
   Blockly.Python.definitions_["import_dht20"] = "from citybit_dht20 import DHT20";
   Blockly.Python.definitions_["import_create_dht20"] = "dht20_citybit = DHT20(SoftI2C(scl=Pin(pin19.pin), sda=Pin(pin20.pin)))";
@@ -52,6 +53,7 @@ Blockly.Blocks["citybit_dht_read"] = {
 Blockly.Python["citybit_dht_read"] = function(block) {
   var dropdown_data = block.getFieldValue("DATA");
   // TODO: Assemble Python into code variable.
+  Blockly.Python.definitions_['import_yolobit'] = 'from yolobit import *';
   Blockly.Python.definitions_['import_i2c'] = 'from machine import Pin, SoftI2C';
   Blockly.Python.definitions_["import_dht20"] = "from citybit_dht20 import DHT20";
   Blockly.Python.definitions_["import_create_dht20"] = "dht20_citybit = DHT20(SoftI2C(scl=Pin(pin19.pin), sda=Pin(pin20.pin)))";
